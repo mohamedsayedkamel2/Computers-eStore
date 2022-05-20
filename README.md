@@ -1,2 +1,2 @@
 # ComputerShop
-A spring boot web application
+Web application created using Java EE technologies (Servlet - JSP - JSF) and Hibernate
