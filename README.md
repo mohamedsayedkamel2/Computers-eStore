@@ -1,5 +1,3 @@
-# Computers4Sale
-
 ### Website description:
 A website from which the user can buy computer components such as Motherboards, Ram, CPU and Disks and can make reviews on the product.
 
