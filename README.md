@@ -1,6 +1,7 @@
 # Computers4Sale
 
-## A website from which the user can buy computer components such as Motherboards, Ram, CPU and Disks and can make reviews on the product.
+### Website description:
+A website from which the user can buy computer components such as Motherboards, Ram, CPU and Disks and can make reviews on the product.
 
 ### Functional Requirements:
 1. The user should be able to retirve all products or a certain product as the user wishes
