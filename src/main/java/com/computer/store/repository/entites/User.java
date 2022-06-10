@@ -7,10 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity
 @Table
+@Entity
+@NamedQueries({@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u ORDER BY u.fullName"),
+	@NamedQuery(name = "User.countAll", query = "SELECT COUNT(*) FROM User u"),
+	@NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email=:email"),
+	@NamedQuery(name = "User.checkLogin", query = "SELECT u FROM User u WHERE u.email=:email AND u.password=:password")})
 public class User implements Serializable
 {
 	

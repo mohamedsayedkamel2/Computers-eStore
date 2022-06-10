@@ -21,13 +21,13 @@ public class OrderRepo extends JPADao<Order> implements JPARepo<Order> {
 	}
 	
 	@Override
-	public Order get(Order id) {
+	public Order get(Object id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public void delete(Order id) {
+	public void delete(Object id) {
 		// TODO Auto-generated method stub
 		
 	}

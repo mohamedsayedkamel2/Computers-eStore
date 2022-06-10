@@ -21,26 +21,46 @@ public class ProductRepo extends JPADao<Product> implements JPARepo<Product> {
 	}
 	
 	@Override
-	public Product get(Product id) {
+	public Product get(Object id) {
 		// TODO Auto-generated method stub
-		return null;
+		return super.find(Product.class, id);
 	}
 
 	@Override
-	public void delete(Product id) {
-		// TODO Auto-generated method stub
-		
+	public void delete(Object id) {
+		super.delete(Product.class, id);
 	}
 
 	@Override
 	public List<Product> listAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return super.findWithNameQuery("Product.findAll");
 	}
-
+	
 	@Override
 	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.countWithNamedQuery("Product.countAll");
+	}
+
+	public Product findByName(String name) {
+		List<Product> result = super.findWithNameQuery("Product.findByName", "name", name);
+		
+		if (!result.isEmpty()) {
+			return result.get(0);
+		}
+		
+		return null;
+	}
+	
+	public List<Product> listByCategory (int categoryId){
+		return super.findWithNameQuery("Product.findByCategory", "id", categoryId);
+	}
+	
+	public List<Product> search(String keyword){
+		return super.findWithNameQuery("Product.search", "keyword", keyword);
+	}
+	
+	public long countByCategory (int categoryId) {
+		return super.countWithNamedQuery("Product.countByCategory", "id", categoryId);
 	}
 }

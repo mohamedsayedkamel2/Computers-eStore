@@ -2,18 +2,24 @@ package com.computer.store.repository.entites;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table
+@NamedQueries({
+	@NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c ORDER BY id"),
+	@NamedQuery(name = "Category.countAll", query = "SELECT COUNT(*) FROM Category"),
+	@NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name")
+})
 public class Category
 {
 	@Id
@@ -24,7 +30,7 @@ public class Category
 	@Column
 	String name;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "productCategory", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "productCategory", fetch = FetchType.EAGER)
 	List<Product>productList;
 
 	public Long getId() {
@@ -53,7 +59,7 @@ public class Category
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", list=" + productList + "]";
+		return name;
 	}
 
 	public Category(Long id, String name, List<Product> list) {
@@ -64,7 +70,6 @@ public class Category
 	}
 
 	public Category() {
-		super();
 	}
 	
 	

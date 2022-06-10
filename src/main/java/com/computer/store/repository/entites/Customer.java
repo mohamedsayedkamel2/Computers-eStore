@@ -3,7 +3,6 @@ package com.computer.store.repository.entites;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,8 +12,18 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQuery;
+import org.hibernate.annotations.NamedQueries;
+
+
 @Entity
 @Table
+@NamedQueries({
+	@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c ORDER BY c.id"),
+	@NamedQuery(name="Customer.countAll", query="SELECT COUNT(c.email) FROM Customer c"),
+	@NamedQuery(name="Customer.findByEmail", query="SELECT c FROM Customer c WHERE c.email = :email"),
+	@NamedQuery(name="Customer.checkLogin", query="SELECT c FROM Customer c WHERE c.email = :email AND c.password = :password")
+})
 public class Customer 
 {
 	@Id
@@ -25,10 +34,10 @@ public class Customer
 	@Column
 	String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+	@OneToMany(mappedBy = "customer")
 	List<Review> customerReviews;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
 	List<Order> customerOrders;
 	
 	@Column

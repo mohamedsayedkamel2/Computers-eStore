@@ -21,13 +21,13 @@ public class ReviewRepo extends JPADao<Review> implements JPARepo<Review>{
 	}
 	
 	@Override
-	public Review get(Review id) {
+	public Review get(Object id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void delete(Review id) {
+	public void delete(Object id) {
 		// TODO Auto-generated method stub
 		
 	}

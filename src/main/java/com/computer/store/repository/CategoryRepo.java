@@ -9,6 +9,9 @@ import com.computer.store.repository.entites.Category;
 public class CategoryRepo extends JPADao<Category> implements JPARepo<Category>
 {
 
+	public CategoryRepo() {
+	}
+	
 	@Override
 	public Category create(Category entity) {
 		// TODO Auto-generated method stub
@@ -22,29 +25,33 @@ public class CategoryRepo extends JPADao<Category> implements JPARepo<Category>
 	}
 	
 	@Override
-	public Category get(Category id) {
+	public Category get(Object id) {
 		// TODO Auto-generated method stub
-		return null;
+		return super.find(Category.class, id);
 	}
 
 	@Override
-	public void delete(Category id) {
-		// TODO Auto-generated method stub
-		
+	public void delete(Object id) {
+		super.delete(Category.class, id);
 	}
 
 	@Override
 	public List<Category> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return super.findWithNameQuery("Category.findAll");
 	}
 
 	@Override
 	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.countWithNamedQuery("Category.countAll");
 	}
-
-
 	
+	public Category findByName(String categoryName) {
+		List<Category> result = super.findWithNameQuery("Category.findByName", "name", categoryName);
+		
+		if (result != null && result.size() > 0) {
+			return result.get(0);
+		}
+		
+		return null;
+	}
 }

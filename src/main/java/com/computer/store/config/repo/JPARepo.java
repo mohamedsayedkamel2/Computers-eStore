@@ -8,9 +8,9 @@ public interface JPARepo<E>
 	
 	public E update(E t);
 	
-	public E get(E id);
+	public E get(Object id);
 	
-	public void delete(E id);
+	public void delete(Object id);
 	
 	public List<E> listAll();
 	

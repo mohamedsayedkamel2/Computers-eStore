@@ -13,9 +13,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
+
 
 @Entity
 @Table
+@NamedQueries({
+	@NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
+	@NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
+	@NamedQuery(name = "Product.countAll", query = "SELECT COUNT(*) FROM Product p"),
+	@NamedQuery(name = "Product.countByCategory", query = "SELECT COUNT(p) FROM Product p"
+	+ " WHERE p.productCategory.id = :categoryId"),
+	@NamedQuery(name = "Product.findByCategory", query = "SELECT p FROM Product p JOIN" 
+	+ " Category c ON p.productCategory.id = c.id AND c.id = :categoryId"),
+	@NamedQuery(name = "Product.search", query = "SELECT p FROM Product p WHERE p.name Like '%' || :keyword || '%'")
+})
 public class Product 
 {
 	@Id
@@ -23,7 +37,7 @@ public class Product
 	@Column
 	Long id;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	Category productCategory;
 	
 	@Column
@@ -86,7 +100,7 @@ public class Product
 	}
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", productCategory=" + productCategory + ", name=" + name + ", description="
+		return "Product [id=" + id + ", productCategory=" + productCategory.name + ", name=" + name + ", description="
 				+ description + ", imgUrl=" + imgUrl + ", price=" + price + ", reviewList=" + reviewList + "]";
 	}
 	public Product(Long id, Category productCategory, String name, String description, String imgUrl, float price,
