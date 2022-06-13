@@ -20,7 +20,7 @@ public class CustomerEdit extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CustomerService customerService = new CustomerService(request, response);
-		customerService.getEditCustomerPage();
+		customerService.getEditCustomerAdminPage();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -80,7 +80,7 @@ public class CustomerService {
 	
 
 	
-	public void getEditCustomerPage() throws ServletException, IOException {
+	public void getEditCustomerAdminPage() throws ServletException, IOException {
 		Long customerId = Long.parseLong(request.getParameter("id"));
 		Customer customer = customerRepo.get(customerId);
 		
@@ -192,7 +192,7 @@ public class CustomerService {
 	}
 
 	public void showCustomerProfileEditForm() throws ServletException, IOException {
-		String editPage = "frontend/edit_profile.jsp";
+		String editPage = "/jsp/customer/edit_profile.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
 		dispatcher.forward(request, response);
 	}

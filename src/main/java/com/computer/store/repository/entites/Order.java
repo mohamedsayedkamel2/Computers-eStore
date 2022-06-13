@@ -1,11 +1,10 @@
 package com.computer.store.repository.entites;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,8 +14,10 @@ import javax.persistence.Table;
 
 @Entity(name = "customer_order")
 @Table(name = "customer_order")
-public class Order
+public class Order implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column	
@@ -34,7 +35,7 @@ public class Order
 	@Column
 	LocalDate orderDate;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne
 	Customer customer;
 
 	public Long getId() {
@@ -76,6 +77,14 @@ public class Order
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
 	@Override
 	public String toString() {
@@ -95,6 +104,4 @@ public class Order
 	public Order() {
 		super();
 	}
-	
-	
 }

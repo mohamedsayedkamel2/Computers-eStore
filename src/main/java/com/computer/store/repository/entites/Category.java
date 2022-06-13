@@ -1,5 +1,6 @@
 package com.computer.store.repository.entites;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,8 +21,10 @@ import javax.persistence.Table;
 	@NamedQuery(name = "Category.countAll", query = "SELECT COUNT(*) FROM Category"),
 	@NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name")
 })
-public class Category
-{
+public class Category implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column

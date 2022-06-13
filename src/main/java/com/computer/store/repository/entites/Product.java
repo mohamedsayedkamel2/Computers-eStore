@@ -1,5 +1,6 @@
 package com.computer.store.repository.entites;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -30,8 +31,10 @@ import org.hibernate.annotations.NamedQuery;
 	+ " Category c ON p.productCategory.id = c.id AND c.id = :categoryId"),
 	@NamedQuery(name = "Product.search", query = "SELECT p FROM Product p WHERE p.name Like '%' || :keyword || '%'")
 })
-public class Product 
+public class Product implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
@@ -52,7 +55,7 @@ public class Product
 	@Column
 	float price;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "product")
 	List<Review> reviewList;
 	
 	
@@ -117,6 +120,5 @@ public class Product
 	public Product() {
 		super();
 	}
-	
 	
 }

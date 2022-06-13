@@ -1,5 +1,6 @@
 package com.computer.store.repository.entites;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,8 +25,11 @@ import org.hibernate.annotations.NamedQueries;
 	@NamedQuery(name="Customer.findByEmail", query="SELECT c FROM Customer c WHERE c.email = :email"),
 	@NamedQuery(name="Customer.checkLogin", query="SELECT c FROM Customer c WHERE c.email = :email AND c.password = :password")
 })
-public class Customer 
+public class Customer implements Serializable
 {
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
@@ -37,7 +41,7 @@ public class Customer
 	@OneToMany(mappedBy = "customer")
 	List<Review> customerReviews;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
 	List<Order> customerOrders;
 	
 	@Column

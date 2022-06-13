@@ -31,7 +31,7 @@ public class AdminLoginFilter implements Filter {
 		boolean loginPage = httpServletRequest.getRequestURI().endsWith("login.jsp");
 		
 		// Checks if the admin user is already authenticated if true the redirect the request to another URI
-		if (loggedIn && (loginRequest || loginRequest)) {
+		if (loggedIn && (loginRequest || loginPage)) {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin/create_category");
 			requestDispatcher.forward(request, response);
 		}

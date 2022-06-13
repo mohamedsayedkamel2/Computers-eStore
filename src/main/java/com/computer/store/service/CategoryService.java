@@ -23,8 +23,9 @@ public class CategoryService {
 	}
 	
 	public void listCategory(String message) throws ServletException, IOException {
+		  // Will get all the categories from the DB
 		  List<Category> listCategory= categoryRepo.listAll();
-		  
+		  // Add the categories to the request scope
 		  request.setAttribute("categories", listCategory); 
 		  
 		  if (message != null) {

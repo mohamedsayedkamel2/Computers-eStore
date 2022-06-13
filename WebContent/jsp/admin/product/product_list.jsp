@@ -27,6 +27,7 @@
 			<th>Description</th>
 			<th>Image</th>
 			<th>Price</th>
+			<th>Avg. Rating</th>
 			<th>Action</th>			
 		</tr>
 		<c:forEach var="product" items="${products}" varStatus="status">

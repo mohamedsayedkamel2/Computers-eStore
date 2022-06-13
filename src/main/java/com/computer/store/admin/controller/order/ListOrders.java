@@ -1,4 +1,4 @@
-package controller;
+package com.computer.store.admin.controller.order;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Home
+ * Servlet implementation class ListOrders
  */
-@WebServlet("/")
-public class Home extends HttpServlet {
+@WebServlet("/ListOrders")
+public class ListOrders extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Home() {
+    public ListOrders() {
         super();
         // TODO Auto-generated constructor stub
     }
