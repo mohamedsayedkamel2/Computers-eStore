@@ -15,13 +15,24 @@
 	<h4>${message}</h4>
 </div>
 </c:if>
-<form method="post" action="/Computers4Sale/admin/login">
+<form style="max-width: 700px; margin: 0 auto" method="post" action="/Computers4Sale/admin/login">
+<div class="border border-secondary rounded p-3">
+	<div class="form-group-row">
+<label class="col-sm-4 col-form-Label">Email</label>
+	<div class="col-sm-8">	
 	<input type="email" name="email" required/>
+	</div></div>
+	<div class="form-group-row">
+	<label class="col-sm-4 col-form-Label">Password</label>
+	<div class="col-sm-8">	
 	<input type="password" name="password" required/>
-	<button type="submit">Submit</button>
-	<input type="button" value="Cancel" onclick="history.go(-1);"/>
+	</div></div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+	<input type="button" value="Cancel" class="btn btn-secondary" onclick="history.go(-1);"/>
+</div>	
 <jsp:directive.include file="/jsp/common/footer.jsp"/>
 <script type="text/javascript" src="/Computers4Sale/WebContent/js/customer-form.js"></script>
 </form>
+
 </body>
 </html>

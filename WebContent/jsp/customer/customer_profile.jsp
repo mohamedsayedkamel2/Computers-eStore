@@ -26,14 +26,9 @@
             <td><b>City:</b></td>
             <td>${loggedCustomer.city}</td>
         </tr>
-		<c:if test="${loggedCustomer.customerOrders != null}">
-			<tr>
-			<c:forEach var="order" items="${loggedCustomer.customerOrders}" varStatus="status">
-				<td><b>Orders</b></td>
-				<td${order.product.name}></td>
-			</c:forEach>
-			</tr>
-		</c:if>		
+        <tr>
+        	<td><a href="/Computers4Sale/customer_products">Your Orders</a></td>
+        </tr>	
         <tr><td>&nbsp;</td></tr>
         <tr>
             <td colspan="2" align="center"><b><a href="/Computers4Sale/edit_profile">Edit My Profile</a></b></td>

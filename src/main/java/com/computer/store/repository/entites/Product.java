@@ -29,7 +29,7 @@ import org.hibernate.annotations.NamedQuery;
 	+ " WHERE p.productCategory.id = :categoryId"),
 	@NamedQuery(name = "Product.findByCategory", query = "SELECT p FROM Product p JOIN" 
 	+ " Category c ON p.productCategory.id = c.id AND c.id = :categoryId"),
-	@NamedQuery(name = "Product.search", query = "SELECT p FROM Product p WHERE p.name Like '%' || :keyword || '%'")
+	@NamedQuery(name = "Product.search", query = "SELECT p FROM Product p WHERE p.name Like '%' || :keyword || '%'"),
 })
 public class Product implements Serializable
 {

@@ -5,9 +5,6 @@
   <a class="navbar-brand" href="./"><font color="yellow">Computers</font><font color="blue">4</font><font color="#FF2D00">Sale</font></a>
   <div>
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="./">Home</a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="./">Categories</a>
       </li>
@@ -15,7 +12,7 @@
         <a class="nav-link" href="./ram">Ram</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./hdd">HDD</a>
+        <a class="nav-link" href="./hdd">Computer Storage</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./motherboard">Motherboard</a>
@@ -23,7 +20,7 @@
       <li class="nav-item">
         <a class="nav-link" href="./case">Case</a>
       </li>                        
-      <c:if test="${loggedCustomer == null}">
+      <c:if test="${loggedCustomer == null and user_email == null}">
        <li class="nav-item">
         <a class="nav-link" href="./register">Register</a>
       </li>      

@@ -30,7 +30,7 @@ public class UserService {
 		 List<User> listUsers = userRepo.listAll();
 		 request.setAttribute("users", listUsers);
 		 request.setAttribute("message", message);
-		 String listPage = "/jsp/admin/user_list.jsp";
+		 String listPage = "/jsp/admin/user/user_list.jsp";
 		 RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
 		 requestDispatcher.forward(request, response);
 	}
@@ -59,7 +59,7 @@ public class UserService {
 	public void editUser() throws ServletException, IOException {
 		Long userId = Long.parseLong(request.getParameter("id"));
 		User user = userRepo.get(userId);
-		String editPage = "/jsp/admin/edit_form.jsp";
+		String editPage = "/jsp/admin/user/edit_form.jsp";
 		request.setAttribute("user", user);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
 		requestDispatcher.forward(request, response);

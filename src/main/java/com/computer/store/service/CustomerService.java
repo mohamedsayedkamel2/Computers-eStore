@@ -201,6 +201,7 @@ public class CustomerService {
 		Customer customer = (Customer) request.getSession().getAttribute("loggedCustomer");
 		updateCustomerFieldsFromForm(customer);
 		customerRepo.update(customer);
+		request.setAttribute("message", "Your profile has been updated !");
 		showCustomerProfile();
 	}
 }

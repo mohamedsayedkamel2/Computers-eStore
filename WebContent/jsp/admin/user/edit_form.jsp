@@ -9,15 +9,29 @@
 </head>
 <body>
 <jsp:directive.include file="/jsp/common/header.jsp"/>
-<form method="post" action="/Computers4Sale/admin/edit_user">
+<form style="max-width: 700px; margin: 0 auto" method="post" action="/Computers4Sale/admin/edit_user">
+<div class="border border-secondary rounded p-3">
 	<input type="hidden" name="userId" value="${user.id}"/>
+		<div class="form-group-row">
+<label class="col-sm-4 col-form-Label">Name</label>
+	<div class="col-sm-8">
 	<input name="name" type="text" value="${user.fullName}" required/>
+	</div></div>
+		<div class="form-group-row">
+<label class="col-sm-4 col-form-Label">Email</label>
+	<div class="col-sm-8">
 	<input name="email" type="email" value="${user.email}" required />
+	</div></div>
+		<div class="form-group-row">
+<label class="col-sm-4 col-form-Label">Password</label>
+	<div class="col-sm-8">
 	<input name="password" type="password" value="${user.password}" required />
-	<button type="submit">Submit</button>
-	<input type="button" value="Cancel" onclick="history.go(-1);"/>
+	</div></div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+	<input type="button" value="Cancel" class="btn btn-secondary" onclick="history.go(-1);"/>
 <jsp:directive.include file="/jsp/common/footer.jsp"/>
 <script type="text/javascript" src="/Computers4Sale/WebContent/js/customer-form.js"></script>
+</div>
 </form>
 </body>
 </html>

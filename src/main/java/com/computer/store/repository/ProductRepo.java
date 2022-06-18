@@ -52,8 +52,8 @@ public class ProductRepo extends JPADao<Product> implements JPARepo<Product> {
 		return null;
 	}
 	
-	public List<Product> listByCategory (int categoryId){
-		return super.findWithNameQuery("Product.findByCategory", "id", categoryId);
+	public List<Product> listByCategory (Long categoryId){
+		return super.findWithNameQuery("Product.findByCategory", "categoryId", categoryId);
 	}
 	
 	public List<Product> search(String keyword){

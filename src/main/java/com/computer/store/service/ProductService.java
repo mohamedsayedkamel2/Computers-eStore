@@ -145,4 +145,12 @@ public class ProductService {
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(resultPage);
 		requestDispatcher.forward(request, response);
 	}
+	
+	public void getListByCategory(Long categoryId) throws ServletException, IOException {
+		List<Product> result = productRepo.listByCategory(categoryId);
+		System.out.println(result);
+		request.setAttribute("results", result);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/product/list_product.jsp");
+		requestDispatcher.forward(request, response);
+	}
 }

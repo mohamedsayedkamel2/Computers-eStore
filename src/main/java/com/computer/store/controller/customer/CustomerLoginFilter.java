@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @WebFilter("/*")
 public class CustomerLoginFilter implements Filter {
-	private static final String[] loginRequiredURLs = {"/profile", "/logout", "/edit_profile", "/write_review", "/cart"};
+	private static final String[] loginRequiredURLs = {"/profile", "/logout", "/edit_profile", "/write_review", "/cart", "/buy_product"};
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -41,6 +41,7 @@ public class CustomerLoginFilter implements Filter {
 			session.setAttribute("redirectURL", requestURL);
 			
 			String loginPage = "/jsp/customer/login_form.jsp";
+			request.setAttribute("message", "You must be logged first");
 			RequestDispatcher dispatcher = httpRequest.getRequestDispatcher(loginPage);
 			dispatcher.forward(request, response);
 		}else {

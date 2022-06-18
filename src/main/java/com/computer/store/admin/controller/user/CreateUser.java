@@ -21,7 +21,7 @@ public class CreateUser extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin/user_form.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin/user/user_form.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
@@ -32,7 +32,7 @@ public class CreateUser extends HttpServlet {
 		RequestDispatcher requestDispatcher;
 		if (name.isEmpty() || email.isEmpty() || password.isEmpty())
 		{
-			requestDispatcher = request.getRequestDispatcher("/jsp/admin/user_form.jsp");
+			requestDispatcher = request.getRequestDispatcher("/jsp/admin/user/user_form.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		UserService userService = new UserService(request, response);
