@@ -1,7 +1,7 @@
 ### Website description:
 A website from which the user can buy computer components such as Motherboards, Ram, CPU and Disks and can make reviews on the product.
 
-### Functional Requirements:
+### Application Requirements:
 1. The user should be able to retirve all products or a certain product as the user wishes
 2. The user should be able to buy the product via **PayPal**
 3. The user should be able to make a review if the user bought a certain product
@@ -9,7 +9,4 @@ A website from which the user can buy computer components such as Motherboards, 
 5. The user can edit the profile
 6. The admin can do CRUD operations on customers, categories and products
 7. The user and admin will be able to do paging and sorting the list of products
-
-### Non-Functional Requirements:
-1. The Observer Design Pattern should be used for extensibility
-2. Use bootstrap for website styling
+8. Use bootstrap for website styling
