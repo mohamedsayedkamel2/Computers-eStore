@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.UserService;
+import com.computer.store.repository.UserRepo;
+import com.computer.store.service.DeletionService;
+import com.computer.store.service.impl.user.UserDeletionService;
 
 @WebServlet("/admin/delete_user")
 public class DeleteUser extends HttpServlet {
@@ -17,8 +19,8 @@ public class DeleteUser extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserService userService = new UserService(request, response);
-		userService.deleteUser();
+		DeletionService service = new UserDeletionService(request, response, new UserRepo());
+		service.delete();
 	}
 
 }

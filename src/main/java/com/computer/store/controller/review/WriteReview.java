@@ -7,23 +7,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.ReviewService;
+import com.computer.store.repository.ReviewRepo;
+import com.computer.store.service.CreationService;
+import com.computer.store.service.impl.review.ReviewCreationService;
+
 
 @WebServlet("/write_review")
 public class WriteReview extends HttpServlet {
-	private static final long serialVersionUID = 1L;
        
-    public WriteReview() {
+    private static final long serialVersionUID = -2849303714402962275L;
+
+	public WriteReview() {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReviewService reviewService = new ReviewService(request, response);
-		reviewService.showReviewForm();
+		CreationService service = new ReviewCreationService(request, response, new ReviewRepo());
+		service.getUserPage();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReviewService reviewService = new ReviewService(request, response);
-		reviewService.submitReview();
+		CreationService service = new ReviewCreationService(request, response, new ReviewRepo());
+		service.create();
 	}
-
 }

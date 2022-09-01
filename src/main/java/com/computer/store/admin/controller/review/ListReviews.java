@@ -7,19 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.ReviewService;
+import com.computer.store.repository.ReviewRepo;
+import com.computer.store.service.InfoReterivingService;
+import com.computer.store.service.impl.review.ReviewInfoRetriverService;
 
 @WebServlet("/admin/list_review")
 public class ListReviews extends HttpServlet {
-	private static final long serialVersionUID = 1L;
        
-    public ListReviews() {
+    private static final long serialVersionUID = 6090308717096245853L;
+
+	public ListReviews() {
     	
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReviewService reviewService = new ReviewService(request, response);
-		reviewService.listAllReview();
+		InfoReterivingService service = new ReviewInfoRetriverService(request, response, new ReviewRepo());
+		service.retriveInfo(null);
 	}
 
 }

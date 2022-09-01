@@ -12,7 +12,7 @@
 		<h3>${message}</h3>
 		<input type="button" value="Return to previous page" onclick="history.go(-1);"/>
 	</div>
-<script type="text/javascript" src="/Computers4Sale/WebContent/js/customer-form.js"></script>	
+<script type="text/javascript" src="/Computers/WebContent/js/customer-form.js"></script>	
 </body>
 <jsp:directive.include file="/jsp/common/footer.jsp"/>
 </html>

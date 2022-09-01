@@ -11,7 +11,7 @@
 <jsp:directive.include file="/jsp/common/header.jsp"/>
 <div align="center">
 	<h2>Products Management</h2>
-	<h3><a href="/Computers4Sale/admin/create_product">Create new Product</a></h3>
+	<h3><a href="/Computers/admin/create_product">Create new Product</a></h3>
 </div>
 <c:if test="${message != null}">
 <div align="center">
@@ -39,8 +39,8 @@
 			<td><img src="${product.imgUrl}"/></td>
 			<td>${product.price}</td>			
 			<td>
-				<a href="/Computers4Sale/admin/edit_product?id=${product.id}">Edit</a> &nbsp;
-				<a href="/Computers4Sale/admin/delete_product?id=${product.id}">Delete</a>
+				<a href="/Computers/admin/edit_product?id=${product.id}">Edit</a> &nbsp;
+				<a href="/Computers/admin/delete_product?id=${product.id}">Delete</a>
 			</td>
 		</tr>
 		</c:forEach>

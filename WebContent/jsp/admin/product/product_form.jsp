@@ -16,11 +16,11 @@
 		</h2>
 	</div>
 	<c:if test="${product != null}">
-	<form method="post" action="/Computers4Sale/admin/edit_product">
+	<form method="post" action="/Computers/admin/edit_product">
 	<input type="hidden" name="id" value="${product.id}" />
 	</c:if>
 	<c:if test="${product == null}">
-	<form action="/Computers4Sale/admin/create_product" method="post">
+	<form action="/Computers/admin/create_product" method="post">
 	</c:if>
 	<input name="name" type="text" required/>
 	<c:if test="${product == null}">
@@ -43,7 +43,7 @@
 	<button type="submit">Submit</button>
 	<input type="button" value="Cancel" onclick="history.go(-1);"/>
 <jsp:directive.include file="/jsp/common/footer.jsp"/>
-<script type="text/javascript" src="/Computers4Sale/WebContent/js/customer-form.js"></script>
+<script type="text/javascript" src="/Computers/WebContent/js/customer-form.js"></script>
 </form>
 </body>
 </html>

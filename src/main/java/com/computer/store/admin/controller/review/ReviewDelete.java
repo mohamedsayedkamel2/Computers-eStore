@@ -7,18 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.ReviewService;
+import com.computer.store.repository.ReviewRepo;
+import com.computer.store.service.DeletionService;
+import com.computer.store.service.impl.review.ReviewDeletionService;
 
 
 @WebServlet("/admin/delete_review")
 public class ReviewDelete extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 	
-    public ReviewDelete() {
+    private static final long serialVersionUID = -439550393465910221L;
+
+	public ReviewDelete() {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReviewService reviewService = new ReviewService(request, response);
-		reviewService.deleteReview();
+		DeletionService service = new ReviewDeletionService(request, response, new ReviewRepo());
+		service.delete();
 	}
 }

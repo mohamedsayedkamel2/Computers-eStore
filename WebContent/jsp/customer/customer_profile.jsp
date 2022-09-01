@@ -27,11 +27,11 @@
             <td>${loggedCustomer.city}</td>
         </tr>
         <tr>
-        	<td><a href="/Computers4Sale/customer_products">Your Orders</a></td>
+        	<td><a href="/Computers/customer_products">Your Orders</a></td>
         </tr>	
         <tr><td>&nbsp;</td></tr>
         <tr>
-            <td colspan="2" align="center"><b><a href="/Computers4Sale/edit_profile">Edit My Profile</a></b></td>
+            <td colspan="2" align="center"><b><a href="/Computers/edit_profile">Edit My Profile</a></b></td>
         </tr>
      </table>
 <jsp:directive.include file="/jsp/common/footer.jsp"/>

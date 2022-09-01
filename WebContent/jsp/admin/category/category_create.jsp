@@ -14,7 +14,7 @@
 	<button type="submit">Submit</button>
 	<input type="button" value="Cancel" onclick="history.go(-1);"/>
 <jsp:directive.include file="/jsp/common/footer.jsp"/>
-<script type="text/javascript" src="/Computers4Sale/WebContent/js/customer-form.js"></script>
+<script type="text/javascript" src="/Computers/WebContent/js/customer-form.js"></script>
 </form>
 </body>
 </html>

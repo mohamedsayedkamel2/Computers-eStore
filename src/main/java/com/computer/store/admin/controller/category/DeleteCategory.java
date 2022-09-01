@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.CategoryService;
+import com.computer.store.repository.CategoryRepo;
+import com.computer.store.service.DeletionService;
+import com.computer.store.service.impl.category.CategoryDeletionService;
 
 @WebServlet("/admin/delete_category")
 public class DeleteCategory extends HttpServlet {
@@ -17,8 +19,9 @@ public class DeleteCategory extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategoryService categoryService = new CategoryService(request, response);
-		categoryService.deleteCategory();
+		CategoryRepo repo = new CategoryRepo();
+		DeletionService deletionService = new CategoryDeletionService(request, response, repo);
+		deletionService.delete();
 	}
 
 

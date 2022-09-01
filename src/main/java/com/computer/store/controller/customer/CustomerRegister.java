@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.CustomerService;
+import com.computer.store.repository.CustomerRepo;
+import com.computer.store.service.impl.customer.CustomerRegistrationService;
+import com.computer.store.util.CustomerUpdateUtil;
 
 @WebServlet("/register")
 public class CustomerRegister extends HttpServlet {
@@ -17,13 +19,12 @@ public class CustomerRegister extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CustomerService customerService = new CustomerService(request, response);
-		customerService.ShowCustomerRegisterForm();		
+		CustomerRegistrationService service = new CustomerRegistrationService(request, response, new CustomerRepo(), new CustomerUpdateUtil(request));
+		service.ShowCustomerRegisterForm();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CustomerService customerService = new CustomerService(request, response);
-		customerService.registerCustomer();
+		CustomerRegistrationService service = new CustomerRegistrationService(request, response, new CustomerRepo(), new CustomerUpdateUtil(request));
+		service.registerCustomer();
 	}
-
 }

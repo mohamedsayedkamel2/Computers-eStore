@@ -9,14 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.UserService;
+import com.computer.store.repository.UserRepo;
+import com.computer.store.service.impl.user.UserLoginService;
+
 
 @WebServlet("/admin/login")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 	
-    public LoginServlet() {
-    }
+	private static final long serialVersionUID = 8335563291665687201L;
+	
+	public LoginServlet()
+	{
+		
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin/login.jsp");
@@ -24,8 +29,9 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserService userService = new UserService(request, response);
-		userService.login();
+		UserRepo userRepo = new UserRepo();
+		UserLoginService loginService = new UserLoginService(request, response, userRepo);
+		loginService.login();
 	}
 
 }

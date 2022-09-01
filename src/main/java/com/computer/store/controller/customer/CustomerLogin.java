@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.CustomerService;
+import com.computer.store.repository.CustomerRepo;
+import com.computer.store.service.impl.customer.CustomerLoginService;
+
 
 @WebServlet("/login")
 public class CustomerLogin extends HttpServlet {
@@ -18,13 +20,13 @@ public class CustomerLogin extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CustomerService customerService = new CustomerService(request, response);
-		customerService.showLoginPage();
+		CustomerLoginService service = new CustomerLoginService(request, response, new CustomerRepo());
+		service.showLoginPage();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CustomerService customerService = new CustomerService(request, response);
-		customerService.doLogin();
+		CustomerLoginService service = new CustomerLoginService(request, response, new CustomerRepo());
+		service.doLogin();
 	}
 
 }

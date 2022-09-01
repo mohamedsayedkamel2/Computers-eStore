@@ -23,7 +23,7 @@
         </tr>
      </table>
      <div align="center">
-     <form action="/Computers4Sale/buy_product" method="post">
+     <form action="/Computers/buy_product" method="post">
         <input type="hidden" name="id" value="${product.id}"/>
         <input type="submit" value="Pay"/>
         <input type="button" value="Return to previous page" onclick="history.go(-1);"/>

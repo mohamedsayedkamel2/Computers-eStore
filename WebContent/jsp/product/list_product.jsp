@@ -34,10 +34,10 @@ ${category} Products List
 			<td><img src="${result.imgUrl}"/></td>
 			<td>${result.price}</td>			
 			<td>
-				<a href="/Computers4Sale/reviews_product?id=${result.id}">See Product reviews</a> &nbsp;
+				<a href="/Computers/reviews_product?id=${result.id}">See Product reviews</a> &nbsp;
 			</td>
 			<td>
-				<a href="/Computers4Sale/buy_product?id=${result.id}">Buy Product</a> &nbsp;
+				<a href="/Computers/buy_product?id=${result.id}">Buy Product</a> &nbsp;
 			</td>			
 		</tr>
 		</c:forEach>

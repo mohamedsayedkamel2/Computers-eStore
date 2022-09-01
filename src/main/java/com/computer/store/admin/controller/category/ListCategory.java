@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.CategoryService;
+import com.computer.store.repository.CategoryRepo;
+import com.computer.store.service.InfoReterivingService;
+import com.computer.store.service.impl.category.CategoryInfoReteriverService;
 
 @WebServlet("/admin/list_category")
 public class ListCategory extends HttpServlet {
@@ -17,8 +19,8 @@ public class ListCategory extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategoryService categoryServices = new CategoryService(request, response);
-		categoryServices.listCategory();		
+		CategoryRepo repo = new CategoryRepo();
+		InfoReterivingService infoService = new CategoryInfoReteriverService(request, response, repo);
+		infoService.retriveInfo(null);
 	}
-
 }

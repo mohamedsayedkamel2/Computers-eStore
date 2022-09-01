@@ -13,16 +13,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @WebFilter("/*")
-public class CustomerLoginFilter implements Filter {
+public class CustomerLoginFilter implements Filter
+{
 	private static final String[] loginRequiredURLs = {"/profile", "/logout", "/edit_profile", "/write_review", "/cart", "/buy_product"};
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+			throws IOException, ServletException
+	{
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
 		
 		String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
 		
-		if (path.startsWith("/admin/")) {
+		if (path.startsWith("/admin/"))
+		{
 			chain.doFilter(request, response);
 			return;
 		}
@@ -30,11 +34,13 @@ public class CustomerLoginFilter implements Filter {
 		boolean loggedIn = session != null && session.getAttribute("loggedCustomer") != null;
 		
 		String requestURL = httpRequest.getRequestURL().toString();
-		if (!loggedIn && isLoginRequired(requestURL)) {
+		if (!loggedIn && isLoginRequired(requestURL))
+		{
 			String queryString = httpRequest.getQueryString();
 			String redirectURL = requestURL;
 			
-			if (queryString != null) {
+			if (queryString != null)
+			{
 				redirectURL = redirectURL.concat("?").concat(queryString);
 			}
 			
@@ -44,27 +50,32 @@ public class CustomerLoginFilter implements Filter {
 			request.setAttribute("message", "You must be logged first");
 			RequestDispatcher dispatcher = httpRequest.getRequestDispatcher(loginPage);
 			dispatcher.forward(request, response);
-		}else {
+		}
+		else
+		{
 			chain.doFilter(request, response);
 		}
 	}
 	
-	public boolean isLoginRequired(String requestURL) {
-		for (String loginRequiredURL : loginRequiredURLs) {
-			if (requestURL.contains(loginRequiredURL)) {
+	public boolean isLoginRequired(String requestURL)
+	{
+		for (String loginRequiredURL : loginRequiredURLs)
+		{
+			if (requestURL.contains(loginRequiredURL)) 
+			{
 				return true;
 			}
 		}
-		
 		return false;
 	}
 
 	
-	public void init(FilterConfig fConfig) throws ServletException {
+	public void init(FilterConfig fConfig) throws ServletException 
+	{
 	}
 
 	@Override
-	public void destroy() {
+	public void destroy()
+	{
 	}
 }
-

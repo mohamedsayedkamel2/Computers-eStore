@@ -11,7 +11,7 @@
 <jsp:directive.include file="/jsp/common/header.jsp"/>
 <div align="center">
 	<h2>Categories Magngement</h2>
-	<h3><a href="/Computers4Sale/admin/create_category">Create new Category</a></h3>
+	<h3><a href="/Computers/admin/create_category">Create new Category</a></h3>
 </div>
 <c:if test="${message != null}">
 <div align="center">
@@ -28,8 +28,8 @@
 		<tr>
 			<td>${category.name}</td>
 			<td>
-				<a href="/Computers4Sale/admin/edit_category?id=${category.id}">Edit</a> &nbsp;
-				<a href="/Computers4Sale/admin/delete_category?id=${category.id}">Delete</a>
+				<a href="/Computers/admin/edit_category?id=${category.id}">Edit</a> &nbsp;
+				<a href="/Computers/admin/delete_category?id=${category.id}">Delete</a>
 			</td>
 		</tr>
 		</c:forEach>

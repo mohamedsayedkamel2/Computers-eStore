@@ -12,14 +12,14 @@
 <div align="center">
 <h3>Becareful! Once you submit a review you can't change it</h3>
 </div>
-	<form method="post" action="/Computers4Sale/write_review">
+	<form method="post" action="/Computers/write_review">
 	<input type="hidden" name="id" value="${product.id}"/>
 	Review Headline: <input name="headline" type="text" required/>
 	Comment: <input name="comment" type="text" required/>	
 	<button type="submit">Submit</button>
 	<input type="button" value="Cancel" onclick="history.go(-1);"/>
 <jsp:directive.include file="/jsp/common/footer.jsp"/>
-<script type="text/javascript" src="/Computers4Sale/WebContent/js/customer-form.js"></script>
+<script type="text/javascript" src="/Computers/WebContent/js/customer-form.js"></script>
 </form>
 </body>
 </html>

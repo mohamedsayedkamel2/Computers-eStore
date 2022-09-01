@@ -9,15 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.UserService;
+import com.computer.store.repository.UserRepo;
+import com.computer.store.service.impl.user.UserCreationService;
+import com.computer.store.service.impl.user.UserInfoRetriverService;
 
 
 @WebServlet("/admin/create_user")
 public class CreateUser extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public CreateUser() {
-    	
+	
+    private static final long serialVersionUID = -7807964042950359601L;
+
+	public CreateUser() {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,9 +37,9 @@ public class CreateUser extends HttpServlet {
 			requestDispatcher = request.getRequestDispatcher("/jsp/admin/user/user_form.jsp");
 			requestDispatcher.forward(request, response);
 		}
-		UserService userService = new UserService(request, response);
-		userService.createUser(name, email, password);
-		userService.listUser("User created successfuly!");
+		
+		new UserCreationService(request, response, new UserRepo()).createUser(name, email, password);
+		new UserInfoRetriverService(request, response, new UserRepo()).retriveInfo("User created successfuly!");
 	}
 
 }

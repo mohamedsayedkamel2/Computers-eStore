@@ -15,7 +15,7 @@
 	<h4>${message}</h4>
 </div>
 </c:if>
-<form style="max-width: 700px; margin: 0 auto" method="post" action="/Computers4Sale/admin/login">
+<form style="max-width: 700px; margin: 0 auto" method="post" action="/Computers/admin/login">
 <div class="border border-secondary rounded p-3">
 	<div class="form-group-row">
 <label class="col-sm-4 col-form-Label">Email</label>
@@ -31,7 +31,7 @@
 	<input type="button" value="Cancel" class="btn btn-secondary" onclick="history.go(-1);"/>
 </div>	
 <jsp:directive.include file="/jsp/common/footer.jsp"/>
-<script type="text/javascript" src="/Computers4Sale/WebContent/js/customer-form.js"></script>
+<script type="text/javascript" src="/Computers/WebContent/js/customer-form.js"></script>
 </form>
 
 </body>

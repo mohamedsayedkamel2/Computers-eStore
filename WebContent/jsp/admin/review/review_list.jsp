@@ -35,8 +35,8 @@
 			<td>${review.customer.name}</td>
 			<td>${review.product.name}</td>									
 			<td>
-				<a href="/Computers4Sale/admin/edit_review?id=${review.id}">Edit</a> &nbsp;
-				<a href="/Computers4Sale/admin/delete_review?id=${review.id}">Delete</a>
+				<a href="/Computers/admin/edit_review?id=${review.id}">Edit</a> &nbsp;
+				<a href="/Computers/admin/delete_review?id=${review.id}">Delete</a>
 			</td>
 		</tr>
 		</c:forEach>

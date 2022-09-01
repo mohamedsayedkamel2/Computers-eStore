@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.computer.store.service.UserService;
+import com.computer.store.repository.UserRepo;
+import com.computer.store.service.UpdatingService;
+import com.computer.store.service.impl.user.UserUpdatingService;
 
 @WebServlet("/admin/edit_user")
 public class EditUser extends HttpServlet {
@@ -17,13 +19,13 @@ public class EditUser extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserService userService = new UserService(request, response);
-		userService.editUser();
+		UpdatingService service = new UserUpdatingService(request, response, new UserRepo());
+		service.getUserPage();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserService userService = new UserService(request, response);
-		userService.updateUser();
+		UpdatingService service = new UserUpdatingService(request, response, new UserRepo());
+		service.update();
 	}
 
 }
